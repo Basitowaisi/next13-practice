@@ -1,4 +1,8 @@
-import './globals.css'
+"use client"
+import Header from "../components/Header"
+import "./globals.css"
+import { store } from "../store"
+import { Provider } from "react-redux"
 
 export default function RootLayout({ children }) {
   return (
@@ -8,7 +12,12 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <Provider store={store}>
+          <Header />
+          <main className="bg-gray-100">{children}</main>
+        </Provider>
+      </body>
     </html>
   )
 }
