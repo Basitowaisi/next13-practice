@@ -1,7 +1,9 @@
+"use client"
 import Link from "next/link"
 import React from "react"
 import { selectProductsCount } from "../slices/cartSlice"
 import { useSelector } from "react-redux"
+import Search from "./Search"
 
 function Header() {
   const productsInCartCount = useSelector(selectProductsCount)
@@ -9,9 +11,9 @@ function Header() {
   const cartCount = productsInCartCount > 0 ? `(${productsInCartCount})` : null
 
   return (
-    <div className="bg-slate-700 text-white flex justify-between items-center px-6 py-4">
+    <div className="flex-col gap-4 sm:gap-0 sm:flex-row bg-slate-700 text-white flex justify-between sm:items-center px-6 py-4">
       {/* left */}
-      <div>
+      <div className="text-center sm:text-left">
         <Link href="/">
           <h1
             title="XYZ Store"
@@ -23,10 +25,13 @@ function Header() {
       </div>
       {/* right */}
       <nav>
-        <ul className="flex gap-6">
+        <ul className="flex gap-6 items-center">
+          <li>
+            <Search />
+          </li>
           <li>
             <Link href="/search" className="navLink">
-              Search
+              Filters
             </Link>
           </li>
           <li>

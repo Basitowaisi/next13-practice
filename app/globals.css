@@ -2,12 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 @layer components {
   .navLink {
     @apply font-semibold hover:underline;
   }
   .bleed-filters-bg-out {
-    --bgColor: rgb(254, 240, 198);
+    --bgColor: rgb(226 232 240);
     background-color: var(--bgColor);
     box-shadow: 0 0 0 100vmax var(--bgColor);
     clip-path: inset(0 -100vmax);

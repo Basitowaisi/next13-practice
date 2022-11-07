@@ -1,14 +1,14 @@
 import Product from "../components/Product"
 import { PRODUCTS_ENDPOINT } from "../utils/api"
 
-const getProducts = async () =>
+const getProducts = () =>
   fetch(PRODUCTS_ENDPOINT, {
-    // Equivalent to SSR or getServerSideProps
-    cache: "no-cache",
+    cache: "no-store",
   }).then((res) => res.json())
 
 export default async function Home() {
   const products = await getProducts()
+
   return (
     <div className="flex flex-wrap gap-8 max-w-7xl mx-auto p-4 justify-center pt-8 pb-8">
       {products.map((product) => (

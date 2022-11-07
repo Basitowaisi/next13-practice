@@ -1,8 +1,5 @@
-"use client"
-import Header from "../components/Header"
 import "./globals.css"
-import { store } from "../store"
-import { Provider } from "react-redux"
+import Main from "./Main"
 
 export default function RootLayout({ children }) {
   return (
@@ -13,10 +10,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <Provider store={store}>
-          <Header />
-          <main className="bg-gray-100">{children}</main>
-        </Provider>
+        <Main>{children}</Main>
       </body>
     </html>
   )

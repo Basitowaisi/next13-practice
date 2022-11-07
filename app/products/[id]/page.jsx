@@ -7,10 +7,10 @@ import { formatMoney, formatNumber } from "../../../utils/formatting"
 
 const getProducts = async () =>
   fetch(PRODUCTS_ENDPOINT, {
-    // cache: "force-cache",
-    next: {
-      revalidate: 10,
-    },
+    cache: "force-cache",
+    // next: {
+    //   revalidate: 10,
+    // },
   }).then((res) => res.json())
 
 // export const generateStaticParams = async () => {
@@ -22,7 +22,8 @@ const getProducts = async () =>
 
 const getSingleProduct = (id) =>
   fetch(`${PRODUCTS_ENDPOINT}/${id}`, {
-    cache: "no-store",
+    cache: "force-cache",
+    // cache: "no-store",
     // next: {
     //   revalidate: 10,
     // },
@@ -56,7 +57,6 @@ export default async function Page({ params }) {
             alt={product.title}
             width="400"
             height="300"
-            objectFit="contain"
             className="object-contain inline-block max-w-[500px] max-h-[300px]"
           />
         </figure>
